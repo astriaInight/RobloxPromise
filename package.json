@@ -1,0 +1,17 @@
+{
+  "name": "modellinker",
+  "version": "1.0.0",
+  "description": "roblox model updater",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "roblox"
+  ],
+  "author": "astrialnight",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
