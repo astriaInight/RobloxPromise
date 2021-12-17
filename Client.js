@@ -26,6 +26,7 @@ class Client extends EventEmitter {
         this.OnReady = require("./Client/OnReady");
         this.GetClientData = require("./Client/GetClientData");
         this.GetUptime = require("./Client/GetUptime");
+        this.UploadModel = require("./Client/UploadModel");
     
         // Auto check cookie & generate token
         this.VerifyCredentials()
