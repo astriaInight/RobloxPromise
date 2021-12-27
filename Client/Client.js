@@ -19,6 +19,7 @@ class Client extends EventEmitter {
     GetProductInfo      = require("./GetProductInfo");
     BuyModel            = require("./BuyModel");
     RemoveFromInventory = require("./RemoveFromInventory");
+    BotSales            = require("./BotSales");
 
     // Constructor
     constructor(cookie) {
