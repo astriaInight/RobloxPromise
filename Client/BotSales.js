@@ -2,9 +2,8 @@
     Client.BotSales(<object> options {
         <int> assetId,
         <int> amount,
-        <int> delay,            <- optional, default: 700
-        <function> callback     <- optional
-    })
+        <int> delay (ms)        <- optional, default: 700
+    }, <function> callback      <- optional)
 */
 // returns: <Promise>
 // resolves: <int> purchases
@@ -25,11 +24,14 @@ function sleep(t) {
     });
 };
 
-module.exports = function(options) {
+module.exports = function(options, callback) {
     return new Promise(async(resolve, reject) => {
         if (!options.assetId) reject("Argument 1, assetId, not provided.");
         if (!options.amount) reject("Argument 2, amount, not provided.");
 
+        const delay = options.delay || 700;
+        const assetId = options.assetId;
+        
         let purchases = 0;
         
         for (let i = 0; i < amount; i++) {
