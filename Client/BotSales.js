@@ -1,8 +1,8 @@
 /*
-    Client.BotSales(<object> options {
-        <int> assetId,
+    Client.BotSales(<int> assetId, <object> options {
         <int> amount,
         <int> delay (ms)        <- optional, default: 700
+        <bool> useProxyPool     <- optional, default: false
     }, <function> callback      <- optional)
 */
 // returns: <Promise>
@@ -24,13 +24,13 @@ function sleep(t) {
     });
 };
 
-module.exports = function(options, callback) {
-    return new Promise(async(resolve, reject) => {
-        if (!options.assetId) reject("Argument 1, assetId, not provided.");
-        if (!options.amount) reject("Argument 2, amount, not provided.");
+module.exports = function(assetId, options, callback) {
+    return new Promise(async(resolve, reject) => { 
+        if (!assetId) reject("Argument 1, assetId, not provided.");
+        if (!options.amount) reject("Argument options.amount, not provided.");
 
         const delay = options.delay || 700;
-        const assetId = options.assetId;
+        const amount = options.amount;
         
         let purchases = 0;
         
