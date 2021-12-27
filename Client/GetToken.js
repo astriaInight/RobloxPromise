@@ -6,10 +6,7 @@ const axios = require("axios");
 
 module.exports = function() {
     return new Promise((resolve, reject) => {
-        axios.post("https://auth.roblox.com/v2/logout", {}, {
-            headers: {
-                Cookie: `.ROBLOSECURITY=${this.cookie}`
-            }})
+        axios.post("https://auth.roblox.com/v2/logout", {}, this.reqOptions)
             .then(res => {
                 const token = res.headers["x-csrf-token"];
 
