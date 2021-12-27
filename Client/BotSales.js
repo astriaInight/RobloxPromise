@@ -25,10 +25,10 @@ function sleep(t) {
     });
 };
 
-module.exports = function(assetId, amount, delay, callback) {
+module.exports = function(options) {
     return new Promise(async(resolve, reject) => {
-        if (!assetId) reject("Argument 1, assetId, not provided.");
-        if (!amount) reject("Argument 2, amount, not provided.");
+        if (!options.assetId) reject("Argument 1, assetId, not provided.");
+        if (!options.amount) reject("Argument 2, amount, not provided.");
 
         let purchases = 0;
         
