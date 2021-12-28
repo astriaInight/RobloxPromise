@@ -20,6 +20,9 @@ class Client extends EventEmitter {
     BuyModel            = require("./BuyModel");
     RemoveFromInventory = require("./RemoveFromInventory");
     BotSales            = require("./BotSales");
+    ParseProxy          = require("./ParseProxy");
+    SetProxyPool        = require("./SetProxyPool");
+    ImportProxies       = require("./ImportProxies");
 
     // Constructor
     constructor(cookie) {

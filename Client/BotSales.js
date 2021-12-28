@@ -3,7 +3,7 @@
         <int> amount,
         <int> delay (ms)        <- optional, default: 700
         <bool> useProxyPool     <- optional, default: false
-    }, <function> callback      <- optional)
+    }, <function> callback (optional))
 */
 // returns: <Promise>
 // resolves: <int> purchases
@@ -22,7 +22,7 @@ function sleep(t) {
             resolve(true);
         }, t);
     });
-};
+};  
 
 module.exports = function(assetId, options, callback) {
     return new Promise(async(resolve, reject) => { 
