@@ -16,6 +16,8 @@
     purchased and removed from the client's inventory
 */
 
+const rand = require("../Random");
+
 function sleep(t) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -36,11 +38,18 @@ module.exports = function(assetId, options, callback) {
         
         for (let i = 0; i < amount; i++) {
             try {
+                // Give the client a random proxy, but only if one exists
+                if (options.useProxyPool && this.proxyPool) {
+                    this.reqOptions["proxy"] = this.RandomProxy();
+                };
+
+                // Buy & "un-buy"
                 await this.BuyModel(assetId);
                 await sleep(delay);
                 await this.RemoveFromInventory(assetId);
                 await sleep(delay);
 
+                // Run the callback function if it exists
                 if (callback) callback();
 
                 purchases++;

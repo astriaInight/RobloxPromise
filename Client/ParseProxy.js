@@ -5,8 +5,8 @@
 
 module.exports = function(proxyStr) {
     if (!proxyStr) throw new TypeError("Argument 1, proxyStr, not provided.");
-
-    const match = proxyStr.match(/(\d+\.\d+\.\d\.\d+):(\d+)/);
+    
+    const match = proxyStr.match(/(\d+\.\d+\.\d+\.\d+):(\d+)/);
     
     if (!match) throw new TypeError(`Can't parse proxy '${proxyStr}'`);
 

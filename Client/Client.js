@@ -23,6 +23,7 @@ class Client extends EventEmitter {
     ParseProxy          = require("./ParseProxy");
     SetProxyPool        = require("./SetProxyPool");
     ImportProxies       = require("./ImportProxies");
+    RandomProxy         = require("./RandomProxy");
 
     // Constructor
     constructor(cookie) {

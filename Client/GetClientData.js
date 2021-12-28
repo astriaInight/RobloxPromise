@@ -25,10 +25,6 @@ const axios = require("axios");
 
 module.exports = function() {
     return new Promise(async (resolve, reject) => {
-        const headers = {
-            "Cookie": `.ROBLOSECURITY=${this.cookie}`,
-            "x-csrf-token": this.token
-        };
         let userInfo = {
             gender: null,
             description: null,
@@ -39,7 +35,7 @@ module.exports = function() {
         };
 
         // Gather info
-        await axios.get("https://accountinformation.roblox.com/v1/gender", {headers: headers})
+        await axios.get("https://accountinformation.roblox.com/v1/gender", this.reqOptions)
             .then(res => {
                 userInfo.gender = res.data.gender;
             })
@@ -47,7 +43,7 @@ module.exports = function() {
                 reject(err);
             });
 
-        await axios.get("https://accountinformation.roblox.com/v1/description", {headers: headers})
+        await axios.get("https://accountinformation.roblox.com/v1/description", this.reqOptions)
             .then(res => {
                 userInfo.description = res.data.description;
             })
@@ -55,7 +51,7 @@ module.exports = function() {
                 reject(err);
             });
 
-        await axios.get("https://accountinformation.roblox.com/v1/birthdate", {headers: headers})
+        await axios.get("https://accountinformation.roblox.com/v1/birthdate", this.reqOptions)
             .then(res => {
                 userInfo.birthdate = res.data;
             })
@@ -63,7 +59,7 @@ module.exports = function() {
                 reject(err);
             });
 
-        await axios.get("https://accountinformation.roblox.com/v1/phone", {headers: headers})
+        await axios.get("https://accountinformation.roblox.com/v1/phone", this.reqOptions)
             .then(res => {
                 userInfo.phone = res.data.phone;
             })
@@ -71,7 +67,7 @@ module.exports = function() {
                 reject(err);
             });
 
-        await axios.get("https://accountinformation.roblox.com/v1/promotion-channels", {headers: headers})
+        await axios.get("https://accountinformation.roblox.com/v1/promotion-channels", this.reqOptions)
             .then(res => {
                 userInfo.socialmedia = res.data;
             })
@@ -79,7 +75,7 @@ module.exports = function() {
                 reject(err);
             });
 
-        await axios.get("https://auth.roblox.com/v1/xbox/connection", {headers: headers})
+        await axios.get("https://auth.roblox.com/v1/xbox/connection", this.reqOptions)
             .then(res => {
                 userInfo.hasConnectedXboxAccount = res.data.hasConnectedXboxAccount;
             })
