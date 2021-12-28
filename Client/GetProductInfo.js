@@ -3,6 +3,7 @@
 // resolves: <bool> success
 
 const axios = require("axios");
+const errors = require("./Errors");
 
 module.exports = function(assetId) {
     return new Promise((resolve, reject) => {
@@ -10,6 +11,8 @@ module.exports = function(assetId) {
 
         axios.get(`https://api.roblox.com/marketplace/productinfo?assetId=${assetId}`)
             .then(res => {
+                if (!res.data) reject(errors.RATELIMITED);
+
                 resolve(res.data);
             })
             .catch(err => {
