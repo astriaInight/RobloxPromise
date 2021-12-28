@@ -5,5 +5,6 @@
 */
 
 module.exports = {
-    Client: require("./Client/Client")
+    Client: require("./Client/Client"),
+    Fleet: require("./Fleet/Fleet")
 };

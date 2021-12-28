@@ -24,6 +24,7 @@ class Client extends EventEmitter {
     SetProxyPool        = require("./SetProxyPool");
     ImportProxies       = require("./ImportProxies");
     RandomProxy         = require("./RandomProxy");
+    GetUsername         = require("./GetUsername");
 
     // Constructor
     constructor(cookie) {
