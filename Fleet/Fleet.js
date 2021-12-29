@@ -12,6 +12,7 @@ const Client = require("../Client/Client");
 class Fleet extends EventEmitter {
     // Functions
     forEach = require("./forEach");
+    OnReady = require("./OnReady");
 
     // Constructor
     constructor(cookies) {
@@ -21,21 +22,28 @@ class Fleet extends EventEmitter {
 
         if (!cookies) throw new TypeError("Argument 1, cookies, not provided.");
 
-        let readyClients = [];
+        // Create & run unnamed async function
+        // So we can use await to wait for each client
+        async(() => {
+            let readyClients = [];
 
-        for (cookie of cookies) {
-            // Ignore empty lines
-            if (cookie === "") continue;
+            for (cookie of cookies) {
+                // Ignore empty lines
+                if (cookie === "") continue;
 
-            const account = new Client(cookie);
+                const account = new Client(cookie);
 
-            account.on("ready", function() {
+                // 1) Wait for login
+                await account.OnReady();
+                
+                // 2) Add it to the list
                 readyClients.push(account);
-            });
-        };
+            };
 
-        this.clients = readyClients;
-        this.emit("ready");
+            this.clients = readyClients;
+            this.emit("ready");
+        })()
+        
     };
 };
 
