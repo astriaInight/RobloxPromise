@@ -24,7 +24,7 @@ class Fleet extends EventEmitter {
 
         // Create & run unnamed async function
         // So we can use await to wait for each client
-        async(() => {
+        (async function() {
             let readyClients = [];
 
             for (cookie of cookies) {
